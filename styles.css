@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'Digital';
+    src: url(fonts/digital.ttf);
+}
+
+@font-face {
+    font-family: 'Neo';
+    src: url(fonts/neo.ttf);
+}
+
+@font-face {
+    font-family: 'Area';
+    src: url(fonts/area.ttf);
+}
+
+#header
+{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Digital';
+    font-size: 48px;
+    color: rgb(66, 144, 216);
+    text-shadow: 2px 2px 2px rgb(0, 0, 0), 0 0 1em rgb(31, 31, 31), 0 0 0.2em rgb(0, 0, 0);
+}
+
+html, body
+{
+    margin: 0;
+    height: 100%;
+    background-color: #511f5f;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+#calculator-container
+{
+    width: 400px;
+    height: 600px;
+    background-color: #722488;
+    border-radius: 25px;
+    box-shadow: 3px 7px 21px 3px rgba(0,0,0,0.64);
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#display-area
+{
+    background-color: #353136;
+    width: 90%;
+    height: 15%;
+    border-radius: 25px;  
+    box-shadow: 1px 0px 19px 1px rgba(0,0,0,0.64) inset;
+}
+
+#button-area
+{
+    background-color: #69247c;
+    width: 90%;
+    height: 75%;
+    border-radius: 25px;
+    box-shadow: 1px 0px 5px -2px rgba(0,0,0,0.25) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.button-row
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 90%;
+    height: 18%;
+}
+
+.calc-button
+{
+    height: 95%;
+    width: 22%;
+    border-radius: 20px;
+    border: none;
+    background-color:#722686;
+    box-shadow: 5px 6px 9px -4px rgba(0,0,0,0.58);
+    font-size: 20px;
+    color: rgb(186, 214, 240);
+    font-family: 'Area';
+}
+
+.calc-eq-button
+{
+    height: 95%;
+    width: 47%;
+    border-radius: 20px;
+    border: none;
+    background-color:#722686;
+    box-shadow: 5px 6px 9px -4px rgba(0,0,0,0.58);
+    font-family: 'Area';
+    font-size: 30px;
+    color: rgb(186, 214, 240);
+}
+
+.socials-item-img
+{
+    width: 50px;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+
+#footer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
