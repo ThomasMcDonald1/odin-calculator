@@ -27,7 +27,7 @@ html, body
 {
     margin: 0;
     height: 100%;
-    background-color: #511f5f;
+    background-color: #441b50;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,7 +37,7 @@ html, body
 
 #calculator-container
 {
-    width: 400px;
+    width: 375px;
     height: 600px;
     background-color: #722488;
     border-radius: 25px;
@@ -47,15 +47,7 @@ html, body
     align-items: center;
     justify-content: center;
     gap: 20px;
-}
-
-#display-area
-{
-    background-color: #353136;
-    width: 90%;
-    height: 15%;
-    border-radius: 25px;  
-    box-shadow: 1px 0px 19px 1px rgba(0,0,0,0.64) inset;
+    border: 2px solid #183363;
 }
 
 #button-area
@@ -88,24 +80,24 @@ html, body
     width: 22%;
     border-radius: 20px;
     border: none;
+    border: 2px solid #274f96;
     background-color:#722686;
     box-shadow: 5px 6px 9px -4px rgba(0,0,0,0.58);
     font-size: 20px;
     color: rgb(186, 214, 240);
     font-family: 'Area';
+    transition: background-color 600ms;
 }
 
-.calc-eq-button
+.calc-button:hover
 {
-    height: 95%;
+    background-color: #882e9e;
+}
+
+#equate-button
+{
     width: 47%;
-    border-radius: 20px;
-    border: none;
-    background-color:#722686;
-    box-shadow: 5px 6px 9px -4px rgba(0,0,0,0.58);
-    font-family: 'Area';
     font-size: 30px;
-    color: rgb(186, 214, 240);
 }
 
 .socials-item-img
@@ -126,4 +118,50 @@ html, body
     margin: 0px;
     padding: 0px;
     color: white;
+    padding-top: 10px;
+}
+
+#display-area
+{
+    background-color: #353136;
+    width: 350px;
+    min-height: 100px;
+    border-radius: 25px;  
+    box-shadow: 1px 0px 19px 1px rgba(0,0,0,0.64) inset;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#entry-container
+{
+    background-color: #3579F2;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 75px;
+    border-radius: 25px;
+    box-shadow: 1px 0px 10px -2px rgba(0,0,0,0.9) inset;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-left: 10px;
+    padding-top: 5px;
+    flex-wrap: wrap;
+}
+
+.display-entry
+{
+    font-family: 'Digital';
+    font-size: 175%;
+    text-align: center;
+    color:#1d3e75;
+    text-shadow: 0px 0px 4px rgba(28,203,235,0.44);
+    min-width: 10px;
+}
+
+#multiply-button
+{
+    font-size: 15px;
 }
