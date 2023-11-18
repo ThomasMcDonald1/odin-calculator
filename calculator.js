@@ -12,12 +12,14 @@ let firstNumber =
 {
     operandVal: "",
     operatorUsed: "",
+    hasDecimal: false,
     MAX_DIGITS: 20
 };
 
 let secondNumber = 
 {
     operandVal: "",
+    hasDecimal: false,
     MAX_DIGITS: 20
 };
 
@@ -55,59 +57,42 @@ function buttonClicked(button)
             break;
         case "+":
             if (firstNumber.operandVal.length > 0) { checkOperator("+"); }
-            //else if(secondNumber.operandVal.length > 0) { compute("+"); }
             break;
         case "7":
-            //alert("7 was pressed!");
             checkNumber(7);
             break;
         case "8":
-            //alert("8 was pressed!");
             checkNumber(8);
             break;
         case "9":
-            //alert("9 was pressed!");
             checkNumber(9);
             break;
         case "-":
-            alert("why is this being clicked?!!");
-            //alert("- was pressed!");
             if (firstNumber.operandVal.length > 0) { checkOperator("-"); }
-            //else if(secondNumber.operandVal.length > 0) { compute("-"); }
             break;
         case "4":
-            //alert("4 was pressed!");
             checkNumber(4);
             break;
         case "5":
-            //alert("5 was pressed!");
             checkNumber(5);
             break;
         case "6":
-            //alert("6 was pressed!");
             checkNumber(6);
             break;
         case "x":
-            //alert("x was pressed!");
             if (firstNumber.operandVal.length > 0) { checkOperator("*"); }
-            //else if(secondNumber.operandVal.length > 0) { compute("*"); }
             break;
         case "1":
-            //alert("1 was pressed!");
             checkNumber(1);
             break;
         case "2":
-            //alert("2 was pressed!");
             checkNumber(2);
             break;
         case "3":
-            //alert("3 was pressed!");
             checkNumber(3);
             break;
         case "/":
-            //alert("/ was pressed!");
             if (firstNumber.operandVal.length > 0) { checkOperator("/"); }
-            //else if(secondNumber.operandVal.length > 0) { compute("/"); }
             break;
         case ".":
             if (secondNumber.operandVal.length === 0 && firstNumber.operatorUsed === "" && 
@@ -127,11 +112,9 @@ function buttonClicked(button)
             }
             break;
         case "0":
-            //alert("0 was pressed!");
             checkNumber(0);
             break; 
         case "=":
-            //alert("= was pressed!");
             if (secondNumber.operandVal.length > 0) 
                 compute();
             break;               
@@ -169,37 +152,6 @@ function checkNumber(number)
             displayEntry(number);
         }
     }
-    /* OLD CODE
-    if (!operatorApplied)
-    {
-        if (firstNumber.operandVal.length < MAX_FIRST_OPS && !(number === 0 && firstNumber.operandVal === "0"))
-        {
-            if (firstNumber.operandVal === "0" && number !== 0) 
-            { 
-                currentEntries = 0;
-                while(entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-                firstNumber.operandVal = ""; 
-            }
-            firstNumber.operandVal += number;
-            currentEntries++;
-            displayEntry(number);
-        }
-    }
-    else
-    {
-        if (secondNumber.operandVal.length < MAX_SECOND_OPS && !(number === 0 && secondNumber.operandVal === "0"))
-        {
-            if (secondNumber.operandVal === "0" && number !== 0) 
-            { 
-                currentEntries = 0;
-                while(entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-                secondNumber.operandVal = ""; 
-            }
-            secondNumber.operandVal += number;
-            currentEntries++;
-            displayEntry(number);
-        }
-    }*/
 }
 
 function displayEntry(entry)
@@ -228,17 +180,6 @@ function checkOperator(operator)
         firstNumber.operatorUsed = operator;
         displayEntry(operator);
     }
-
-    /* OLD CODE
-    if (firstNumber.operandVal.length > 0)
-    {
-        operatorApplied = true;
-        let displayEntry = document.createElement('div');
-        displayEntry.classList.add('display-entry');
-        displayEntry.textContent = currentOperator;
-        entryArea.appendChild(displayEntry);
-    }
-    */
 }
 
 function compute()
@@ -247,85 +188,27 @@ function compute()
     let second = new Big(secondNumber.operandVal);
     switch(firstNumber.operatorUsed)
     {
-        /*case "+/-":
-            // This checks to make sure only the first number is applied and doesn't have an operator
-            // Won't do anything if the firstNumber already has an operator
-             OLD CODE
-            if (!operatorApplied) 
-            { 
-                let tmp = BigInt(firstNumber.operandVal);
-                tmp *= -1n;
-                if (tmp < 0) { currentEntries++; }
-                else { currentEntries--; }
-                firstNumber.operandVal = tmp.toString();     
-                while (entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-                for (let i = 0; i < firstNumber.operandVal.length; i++)
-                {
-                    displayEntry(firstNumber.operandVal[i]);
-                }
-            }
-            else if(secondNumber.operandVal.length > 0 && operatorApplied)
-            {
-                compute(currentOperator);
-                compute("+/-");
-            }
-            break;*/
         case "+":
             {
                 let third = first.plus(second);
                 firstNumber.operandVal = third.toString();
-                alert(firstNumber.operandVal);
                 clearDisplay();
                 for(let i = 0; i < firstNumber.operandVal.length; i++)
                 {
                     displayEntry(firstNumber.operandVal[i]);
                 }
-                /* OLD CODE 
-                firstNumber.operandVal = solve().toString();
-                secondNumber.operandVal = "";
-                currentOperator = "+";
-                while (entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-                for (let i = 0; i < firstNumber.operandVal.length; i++)
-                {
-                    displayEntry(firstNumber.operandVal[i]);
-                }
-                checkOperator();
-                break;
-                */
             }
+            break;
         case "-":
-            alert("uhhh?");
             firstNumber.operandVal = (first.minus(second)).toString();
             clearDisplay();
             for(let i = 0; i < firstNumber.operandVal.length; i++)
             {
                 displayEntry(firstNumber.operandVal[i]);
             }
-            /* OLD CODE
-            firstNumber.operandVal = solve().toString();
-            secondNumber.operandVal = "";
-            currentOperator = "-";
-            while (entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-            for (let i = 0; i < firstNumber.operandVal.length; i++)
-            {
-                displayEntry(firstNumber.operandVal[i]);
-            }
-            checkOperator();
-            */
             break;
         case "*":
             Multiply(secondNumber.operandVal);
-            /* OLD CODE
-            firstNumber.operandVal = solve().toString();
-            secondNumber.operandVal = "";
-            currentOperator = "*";
-            while (entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-            for (let i = 0; i < firstNumber.operandVal.length; i++)
-            {
-                displayEntry(firstNumber.operandVal[i]);
-            }
-            checkOperator();
-            */
             break;
         case "/":
             if (secondNumber.operandVal === "0") { displayError(); }
@@ -339,23 +222,7 @@ function compute()
                     displayEntry(firstNumber.operandVal[i]);
                 }
             }
-
-            /* OLD CODE
-            firstNumber.operandVal = solve().toString();
-            if (firstNumber.operandVal === "ERROR") { displayError(); }
-            secondNumber.operandVal = "";
-            currentOperator = "/";
-            while (entryArea.firstChild) { entryArea.removeChild(entryArea.firstChild); }
-            for (let i = 0; i < firstNumber.operandVal.length; i++)
-            {
-                displayEntry(firstNumber.operandVal[i]);
-            }
-            checkOperator();
-            */
             break;
-        /*case "=":
-            if (secondNumber.operandVal.length > 0) { compute(); }
-            break;*/
         default:
             break;
     }
@@ -380,6 +247,7 @@ function clearDisplay()
         entryArea.removeChild(entryArea.firstChild);
     }
     secondNumber.operandVal = "";
+    secondNumber.hasDecimal = false;
 }
 
 function resetAll()
@@ -387,6 +255,7 @@ function resetAll()
     clearDisplay();
     firstNumber.operandVal = "";
     firstNumber.operatorUsed = "";
+    firstNumber.hasDecimal = false;
 }
 
 function removeLastInput()
@@ -417,23 +286,3 @@ function displayError()
         displayEntry(firstNumber.operandVal[i]);
     }
 }
-/*function solve()
-{
-    /* OLD CODE
-    switch (currentOperator)
-    {
-        case "+":
-            return BigInt(firstNumber.operandVal) + BigInt(secondNumber.operandVal);
-            break;
-        case "-":
-            return BigInt(firstNumber.operandVal) - BigInt(secondNumber.operandVal);
-            break;
-        case "*":
-            return BigInt(firstNumber.operandVal) * BigInt(secondNumber.operandVal);
-            break;
-        case "/":
-            if (parseInt(secondNumber.operandVal) === 0) { return "ERROR"; }
-            return BigInt(firstNumber.operandVal) / BigInt(secondNumber.operandVal);
-            break;
-    }
-}*/
